@@ -1,20 +1,41 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Comissões</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-card>
+    <ion-card-content>
+
+      <h2>Total vendido</h2>
+      <h1>R$ {{ total }}</h1>
+
+      <h3>Comissão</h3>
+      <p>R$ {{ comissao }}</p>
+
+      <p *ngIf="falta > 0">
+        Faltam R$ {{ falta }} para próxima meta
+      </p>
+
+      <p *ngIf="falta === 0">
+        🎉 Meta máxima atingida!
+      </p>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item>
+    <ion-input
+      type="number"
+      placeholder="Digite o valor da venda"
+      [(ngModel)]="novaVenda">
+    </ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="adicionarVenda()">
+    Adicionar venda
+  </ion-button>
+
 </ion-content>
