@@ -38,4 +38,19 @@
     Adicionar venda
   </ion-button>
 
+
+<ion-list>
+  <ion-list-header>
+    Histórico de vendas
+  </ion-list-header>
+
+  <ion-item *ngFor="let venda of vendas">
+    <ion-label>
+      <h2>R$ {{ venda.valor }}</h2>
+      <p>{{ venda.data }}</p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+
+
 </ion-content>

@@ -4,33 +4,47 @@ import { IonicModule } from '@ionic/angular';
 
 import { FormsModule } from '@angular/forms';
 
+import {CommonModule} from '@angular/common';
 
+type Venda = {
+    valor: number;
+    data: string;
+  };
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonicModule, FormsModule],
+  standalone: true,
+  imports: [IonicModule, FormsModule, CommonModule],
 })
 export class HomePage {
 
-  vendas: number[] = [];
+
+  vendas: Venda[] = [];
   total: number = 0;
   comissao: number = 0;
   falta: number = 0;
   novaVenda: number = 0;
 
+  
   adicionarVenda() {
-    if (!this.novaVenda) return;
+  if (!this.novaVenda) return;
 
-    this.vendas.push(this.novaVenda);
-    this.novaVenda = 0;
+  const venda: Venda = {
+    valor: this.novaVenda,
+    data: new Date().toLocaleString()
+  };
 
-    this.salvarDados();
-    this.atualizar();
-  }
+  this.vendas.push(venda);
+  this.novaVenda = 0;
+
+  this.salvarDados();
+  this.atualizar();
+}
+
 
   atualizar() {
-    this.total = this.vendas.reduce((a, b) => a + b, 0);
+    this.total = this.vendas.reduce((acc,v) => acc + v.valor,0);
     this.comissao = this.calcularComissao(this.total);
     this.falta = this.proximaMeta(this.total);
   }
