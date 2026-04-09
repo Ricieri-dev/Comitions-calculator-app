@@ -2,8 +2,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "strict": true,
@@ -21,6 +19,7 @@
     "lib": ["es2018", "dom"],
     "skipLibCheck": true,
     "useDefineForClassFields": false
+    
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
