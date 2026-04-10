@@ -10,28 +10,34 @@
     <ion-card-content>
 
       <h2>Total vendido</h2>
-      <h1>R$ {{ total }}</h1>
+      <h1>R$ {{ formatarMoeda(total) }}</h1>
 
       <h3>Comissão</h3>
-      <p>R$ {{ comissao }}</p>
+      <p>R$ {{ formatarMoeda(comissao) }}</p>
 
       <p *ngIf="falta > 0">
-        Faltam R$ {{ falta }} para próxima meta
+        Faltam R$ {{ formatarMoeda(falta) }} para próxima meta
       </p>
 
       <p *ngIf="falta === 0">
         🎉 Meta máxima atingida!
       </p>
 
+      <ion-progress-bar
+        [value]="progresso"
+        [color]="corProgresso">
+    </ion-progress-bar>
+
     </ion-card-content>
   </ion-card>
 
   <ion-item>
     <ion-input
-      type="number"
-      placeholder="Digite o valor da venda"
-      [(ngModel)]="novaVenda">
-    </ion-input>
+      type="text"
+      placeholder="R$ 0,00"
+      [value]="novaVenda"
+      (ionInput)="formatarInput($event)">
+</ion-input>
   </ion-item>
 
   <ion-button expand="block" (click)="adicionarVenda()">
@@ -44,13 +50,28 @@
     Histórico de vendas
   </ion-list-header>
 
-  <ion-item *ngFor="let venda of vendas">
-    <ion-label>
-      <h2>R$ {{ venda.valor }}</h2>
-      <p>{{ venda.data }}</p>
-    </ion-label>
-  </ion-item>
+  <ion-item *ngFor="let venda of vendas; let i = index">
+  <ion-label>
+    <h2>R$ {{ formatarMoeda(venda.valor) }}</h2>
+    <p>{{ venda.data }}</p>
+  </ion-label>
+
+  <ion-button
+    fill="clear"
+    color="danger"
+    (click)="removerVenda(i)">
+    🗑️
+  </ion-button>
+
+</ion-item>
 </ion-list>
+
+<ion-button
+  color="danger"
+  expand="block"
+  (click)="resetarMes()">
+  Resetar mês
+</ion-button>
 
 
 </ion-content>

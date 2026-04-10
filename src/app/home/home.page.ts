@@ -24,19 +24,28 @@ export class HomePage {
   total: number = 0;
   comissao: number = 0;
   falta: number = 0;
-  novaVenda: number = 0;
+  novaVenda: string = '';
 
   
   adicionarVenda() {
   if (!this.novaVenda) return;
 
+  const valorConvertido = Number(
+    this.novaVenda.replace(/\./g, '').replace(',', '.')
+  );
+
+  if (isNaN(valorConvertido)) {
+    alert("Valor inválido");
+    return;
+  }
+
   const venda: Venda = {
-    valor: this.novaVenda,
+    valor: valorConvertido,
     data: new Date().toLocaleString()
   };
 
   this.vendas.push(venda);
-  this.novaVenda = 0;
+  this.novaVenda = '';
 
   this.salvarDados();
   this.atualizar();
@@ -75,6 +84,61 @@ export class HomePage {
     this.atualizar();
     }
   }
+
+  removerVenda(index: number){
+    const confirmar = confirm('Deseja excluir essa venda ?');
+
+    if(!confirmar) return;
+    
+    this.vendas.splice(index, 1);
+    this.salvarDados();
+    this.atualizar();
+  }
+
+  resetarMes(){
+    const confirmar = confirm('Deseja resetar o mês ?')
+    
+  if(!confirmar) return;
+
+    this.vendas = [];
+    this.salvarDados();
+    this.atualizar();
+  }
+
+  formatarMoeda(valor: number): string {
+    return valor.toLocaleString('pt-BR',{
+      style: 'currency',
+      currency: 'BRL'
+    });
+  }
+
+  get progresso() : number {
+    if (this.total >= 40000) return 1;
+    return this.total/40000;
+  }
+  get corProgresso () : string {
+    if(this.total >= 40000) return 'success';
+    if(this.total >= 30001) return 'success';
+    if(this.total >= 26001) return 'success';
+    return 'danger';
+  }
+
+  formatarInput(event: any) {
+  let valor = event.target.value || '';
+
+  valor = valor.replace(/\D/g, '');
+
+  if (!valor) {
+    this.novaVenda = '';
+    return;
+  }
+
+  valor = (Number(valor) / 100).toFixed(2);
+  valor = valor.replace('.', ',');
+  valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+  this.novaVenda = valor;
+}
 
   ngOnInit() {
   this.carregarDados();
