@@ -88,9 +88,9 @@ export class HomePage {
   }
 
   proximaMeta(total: number): number {
-    if (total < 26000) return 26000 - total;
-    if (total < 30000) return 30000 - total;
-    if (total < 40000) return 40000 - total;
+    if (total < 26001) return 26001 - total;
+    if (total < 30001) return 30001 - total;
+    if (total < 40001) return 40001 - total;
     return 0;
   }
 
