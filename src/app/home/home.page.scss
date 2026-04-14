@@ -4,6 +4,11 @@
   }
 }
 
+.content-shell {
+  width: min(100%, 680px);
+  margin: 0 auto;
+}
+
 .summary-card {
   margin-top: 8px;
   border-radius: 16px;
@@ -51,6 +56,13 @@ ion-progress-bar {
   display: grid;
   gap: 8px;
   margin-bottom: 12px;
+  position: sticky;
+  bottom: 0;
+  z-index: 3;
+  padding: 12px;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--ion-background-color) 90%, transparent);
+  backdrop-filter: blur(4px);
 }
 
 ion-list-header {
@@ -72,12 +84,7 @@ ion-item p {
     --padding-end: 24px;
   }
 
-  .summary-card,
-  .input-item,
-  .actions,
-  ion-list {
-    max-width: 680px;
-    margin-left: auto;
-    margin-right: auto;
+  .summary-card {
+    margin-top: 16px;
   }
 }
