@@ -30,7 +30,7 @@
         type="text"
         inputmode="decimal"
         placeholder="R$ 0,00"
-        [value]="novaVenda"
+        [(ngModel)]="novaVenda"
         (ionInput)="formatarInput($event)"
       ></ion-input>
     </ion-item>
@@ -54,7 +54,7 @@
           <h2>{{ formatarMoeda(venda.valor) }}</h2>
           <p>{{ venda.data }}</p>
         </ion-label>
-        <ion-button fill="clear" color="danger" (click)="removerVenda(i)">
+        <ion-button slot="end" fill="clear" color="danger" (click)="removerVenda(i)">
           🗑️
         </ion-button>
       </ion-item>
