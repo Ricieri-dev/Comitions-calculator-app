@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Comissões App</string>
+    <string name="title_activity_main">Comissões App</string>
+    <string name="package_name">com.filipe.comissoes</string>
+    <string name="custom_url_scheme">com.filipe.comissoes</string>
+</resources>
