@@ -21,10 +21,7 @@
     "@angular/platform-browser": "^20.0.0",
     "@angular/platform-browser-dynamic": "^20.0.0",
     "@angular/router": "^20.0.0",
-<<<<<<< HEAD
     "@capacitor/android": "^8.3.0",
-=======
->>>>>>> 521fb1e6c640f3ca405084df49f4761afe625b8d
     "@capacitor/app": "8.1.0",
     "@capacitor/core": "8.3.0",
     "@capacitor/haptics": "8.0.1",
@@ -43,11 +40,7 @@
     "@angular-eslint/eslint-plugin-template": "^20.0.0",
     "@angular-eslint/schematics": "^20.0.0",
     "@angular-eslint/template-parser": "^20.0.0",
-<<<<<<< HEAD
     "@angular/cli": "20.3.23",
-=======
-    "@angular/cli": "^20.0.0",
->>>>>>> 521fb1e6c640f3ca405084df49f4761afe625b8d
     "@angular/compiler-cli": "^20.0.0",
     "@angular/language-service": "^20.0.0",
     "@capacitor/cli": "8.3.0",
